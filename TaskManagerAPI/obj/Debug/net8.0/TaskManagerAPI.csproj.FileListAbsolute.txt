@@ -265,3 +265,5 @@
 /Users/bsm/Documents/projects/dot net/TaskManager/TaskManagerAPI/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Scripting.resources.dll
 /Users/bsm/Documents/projects/dot net/TaskManager/TaskManagerAPI/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Scripting.resources.dll
 /Users/bsm/Documents/projects/dot net/TaskManager/TaskManagerAPI/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Scripting.resources.dll
+/Users/bsm/Documents/projects/dot net/TaskManager/TaskManagerAPI/bin/Debug/net8.0/Npgsql.dll
+/Users/bsm/Documents/projects/dot net/TaskManager/TaskManagerAPI/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll

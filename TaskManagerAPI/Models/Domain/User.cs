@@ -8,6 +8,6 @@ public class User
     public bool IsActive { get; set; }
     
     // Foreign Keys
-    public Status Role { get; set; }
+    public Role Role { get; set; }
     
 }
