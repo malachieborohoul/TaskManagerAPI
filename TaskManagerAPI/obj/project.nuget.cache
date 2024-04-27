@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "6I1nK61oOmjVqtFt6h4BP0n3bfC65dWfjyB+s6kNJYa5mLEnLmZFzPwmaTTjHD8VmlffgoIh8CEEZEGj8hOTZA==",
+  "success": true,
+  "projectFilePath": "/Users/bsm/Documents/projects/dot net/TaskManager/TaskManagerAPI/TaskManagerAPI.csproj",
+  "expectedPackageFiles": [
+    "/Users/bsm/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/bsm/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/bsm/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "/Users/bsm/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "/Users/bsm/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "/Users/bsm/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
