@@ -6,4 +6,8 @@ public class User
     public string Username { get; set; }
     public string Email { get; set; }
     public bool IsActive { get; set; }
+    
+    // Foreign Keys
+    public Status Role { get; set; }
+    
 }

@@ -7,4 +7,9 @@ public class Task
     public string Description { get; set; }
     public DateTime DueDate { get; set; }
     
+    // Foreign Keys
+    public Status Status { get; set; }
+    public User User { get; set; }
+    
+    
 }
