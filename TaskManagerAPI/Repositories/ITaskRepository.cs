@@ -1,16 +1,19 @@
-using Task = TaskManagerAPI.Models.Domain.Task;
+
+
+
+using TaskManagerAPI.Models.Domain;
 
 namespace TaskManagerAPI.Repositories;
 
 public interface ITaskRepository
 {
-    Task<List<Task>> GetAll();
+    Task<List<Tasks>> GetAll();
 
-    Task<Task?> GetById(Guid id);
+    Task<Tasks?> GetById(Guid id);
 
-    Task<Task> Create(Task task);
+    Task<Tasks> Create(Tasks task);
 
-    Task<Task?> Update(Guid id, Task task);
+    Task<Tasks?> Update(Guid id, Tasks task);
 
-    Task<Task?> Delete(Guid id);
+    Task<Tasks?> Delete(Guid id);
 }

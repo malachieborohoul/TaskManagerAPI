@@ -52,7 +52,7 @@ namespace TaskManagerAPI.Migrations
                     b.ToTable("Status");
                 });
 
-            modelBuilder.Entity("TaskManagerAPI.Models.Domain.Task", b =>
+            modelBuilder.Entity("TaskManagerAPI.Models.Domain.Tasks", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -111,7 +111,7 @@ namespace TaskManagerAPI.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("TaskManagerAPI.Models.Domain.Task", b =>
+            modelBuilder.Entity("TaskManagerAPI.Models.Domain.Tasks", b =>
                 {
                     b.HasOne("TaskManagerAPI.Models.Domain.Status", "Status")
                         .WithMany()

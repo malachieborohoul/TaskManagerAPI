@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 using TaskManagerAPI.Data;
-using Task = TaskManagerAPI.Models.Domain.Task;
+using TaskManagerAPI.Models.Domain;
 
 namespace TaskManagerAPI.Repositories;
 
@@ -13,17 +13,17 @@ public class SQLTaskRepository:ITaskRepository
     {
         _dbContext = dbContext;
     }
-    public async Task<List<Task>> GetAll()
+    public async Task<List<Tasks>> GetAll()
     {
         return await _dbContext.Tasks.ToListAsync();
     }
 
-    public async Task<Task?> GetById(Guid id)
+    public async Task<Tasks?> GetById(Guid id)
     {
         return await _dbContext.Tasks.FindAsync(id);
     }
 
-    public async Task<Task> Create(Task task)
+    public async Task<Tasks> Create(Tasks task)
     {
          await _dbContext.Tasks.AddAsync(task);
          await _dbContext.SaveChangesAsync();
@@ -32,7 +32,7 @@ public class SQLTaskRepository:ITaskRepository
 
     }
 
-    public async Task<Task?> Update(Guid id, Task task)
+    public async Task<Tasks?> Update(Guid id, Tasks task)
     {
         var existingTask = await _dbContext.Tasks.FindAsync(id);
 
@@ -51,7 +51,7 @@ public class SQLTaskRepository:ITaskRepository
         
     }
 
-    public async Task<Task?> Delete(Guid id)
+    public async Task<Tasks?> Delete(Guid id)
     {
         var existingTask = await _dbContext.Tasks.FindAsync(id);
 

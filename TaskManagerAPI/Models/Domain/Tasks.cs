@@ -1,6 +1,6 @@
 namespace TaskManagerAPI.Models.Domain;
 
-public class Task
+public class Tasks
 {
     public Guid Id { get; set; }
     public string Title { get; set; }

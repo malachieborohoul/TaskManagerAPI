@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using StatusManagerAPI.Repositories;
 using TaskManagerAPI.Data;
+using TaskManagerAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<TaskManagerDbContext>(optionsAction: options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("TaskManagerConnectionString")));
+
+builder.Services.AddScoped<ITaskRepository, SQLTaskRepository>();
+
+builder.Services.AddScoped<IStatusRepository, SQLStatusRepository>();
+
 
 var app = builder.Build();
 
