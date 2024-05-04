@@ -2,54 +2,95 @@
 
 
 
-<div class="tw-relative tw-overflow-x-auto tw-shadow-md tw-sm:rounded-lg">
-    <table class="tw-w-full tw-text-sm tw-text-left tw-rtl:text-right tw-text-gray-500 ">
-      
-        <thead class="tw-text-xs tw-text-gray-700 tw-uppercase tw-bg-gray-50  ">
-        <tr>
-            <th scope="col" class="tw-px-6 tw-py-3">
-                Title
-            </th>
-            <th scope="col" class="tw-px-6 tw-py-3">
-                Description
-            </th>
-            <th scope="col" class="tw-px-6 tw-py-3">
-                Due Date
-            </th>
-            <th scope="col" class="tw-px-6 tw-py-3">
-                Status
-            </th>
-            <th scope="col" class="tw-px-6 tw-py-3">
-                <span class="tw-sr-only">Edit</span>
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr class="tw-bg-white tw-border-b ">
-            <th scope="row" class="tw-px-6 tw-py-4 tw-font-medium tw-text-gray-900 tw-whitespace-nowrap ">
-                Apple MacBook Pro 17"
-            </th>
-            <td class="tw-px-6 tw-py-4">
-                Silver
-            </td>
-            <td class="tw-px-6 tw-py-4">
-                Laptop
-            </td>
-            <td class="tw-px-6 tw-py-4">
-                $2999
-            </td>
-            <td class="tw-px-6 tw-py-4 tw-text-right">
-                <a href="#" class="tw-font-medium tw-text-blue-600  tw-hover:underline">Edit</a>
-            </td>
-        </tr>
-      
-  
-        </tbody>
-    </table>
-</div>
-
-
-
 @code {
+    // Injectez un HttpClient pour effectuer l'appel API
+    [Inject]
+    private HttpClient httpClient { get; set; }
+    private List<BaseLibrary.Entities.Tasks>? tasks;
+    private bool isLoading = true; // Flag for loading indicator
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Effectuez l'appel API ici et récupérez les données dans la liste tasks
+        tasks = await GetTasksFromApi();
+        Console.WriteLine(tasks.Count);
+    }
     
+    private async Task<List<BaseLibrary.Entities.Tasks>?> GetTasksFromApi()
+    {
+        try
+        {
+            // Utilisez HttpClient pour appeler votre API et récupérer les données
+            var response = await httpClient.GetAsync("api/Tasks");
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadFromJsonAsync<List<BaseLibrary.Entities.Tasks>>();
+            }
+            else
+            {
+                // Gérez les erreurs ici
+                return new List<BaseLibrary.Entities.Tasks>();
+            }
+        }
+        catch (Exception ex)
+        {
+            // Gérez les exceptions ici
+            Console.WriteLine($"Erreur lors de l'appel API : {ex.Message}");
+            return new List<BaseLibrary.Entities.Tasks>();
+        }
+    }
 }
+
+@if (tasks != null)
+{
+    <div class="tw-relative tw-overflow-x-auto tw-shadow-md tw-sm:rounded-lg">
+        <table class="tw-w-full tw-text-sm tw-text-left tw-rtl:text-right tw-text-gray-500 ">
+      
+            <thead class="tw-text-xs tw-text-gray-700 tw-uppercase tw-bg-gray-50  ">
+            <tr>
+                <th scope="col" class="tw-px-6 tw-py-3">
+                    Titre
+                </th>
+                <th scope="col" class="tw-px-6 tw-py-3">
+                    Description
+                </th>
+                <th scope="col" class="tw-px-6 tw-py-3">
+                    Due Date
+                </th>
+               
+                <th scope="col" class="tw-px-6 tw-py-3">
+                    <span class="tw-sr-only">Edit</span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var task in tasks)
+            {
+                <tr class="tw-bg-white tw-border-b ">
+                    <th scope="row" class="tw-px-6 tw-py-4 tw-font-medium tw-text-gray-900 tw-whitespace-nowrap ">
+                        @task.Title
+                    </th>
+                    <td class="tw-px-6 tw-py-4">
+                        @task.Description
+                    </td>
+                    <td class="tw-px-6 tw-py-4">
+                        @task.DueDate.Date
+                    </td>
+                
+                    <td class="tw-px-6 tw-py-4 tw-text-right">
+                        <a href="#" class="tw-font-medium tw-text-blue-600  tw-hover:underline">Edit</a>
+                    </td>
+                </tr>
+            }
+            
+
+
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+<p>Erreur lors du chargement des tâches.</p>
+}
+
