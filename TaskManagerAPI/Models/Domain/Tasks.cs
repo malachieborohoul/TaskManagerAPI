@@ -8,8 +8,8 @@ public class Tasks
     public DateTime DueDate { get; set; }
     
     // Foreign Keys
-    public Status Status { get; set; }
-    public User User { get; set; }
+    public Guid StatusId { get; set; }
+    public Guid UserId { get; set; }
     
     
 }
